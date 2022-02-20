@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CrudApiService.Abstract.Model
 {
@@ -51,6 +52,12 @@ namespace CrudApiService.Abstract.Model
         /// <summary>
         /// Общая сумма всей покупки.
         /// </summary>
-        public int TotalAmount { get; set; }
+        public int TotalAmount {
+            get
+            {
+                return SalesData.Select(p => p.ProductAmount).Sum();
+            }
+            private set { }
+        }
     }
 }

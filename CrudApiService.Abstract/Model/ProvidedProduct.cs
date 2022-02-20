@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CrudApiService.Abstract.Model
+﻿namespace CrudApiService.Abstract.Model
 {
     /// <summary>
     /// Модель данных для доступных для продажи товаров

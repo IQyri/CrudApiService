@@ -54,8 +54,11 @@ namespace CrudApiService.Tests
         public void Test02()
         {
             using var context = DataGenerator.Initialize();
-            context.Buyers.ForEach(p => Console.WriteLine($"Buyers Info: Id-{p.Id} SalesId-{p.SaleIds.Select(v => v.Id)} Sale-{p.Sale == null}"));
-            context.Sales.ForEach(s => Console.WriteLine($"Sales: Buyer - {s.BuyerId} Date - {s.Date} Time - {s.Time} SalePoint - {s.SalesPoint.Name} Amount - {s.TotalAmount}"));
+            context.Buyers
+                .ForEach(p => Console.WriteLine($"Buyers Info: Id-{p.Id} Sales-{p.SalesIds != null}"));
+            context.Sales
+                .ForEach(s =>
+                    Console.WriteLine($"Sales: Buyer Id - {s.BuyerId} Date - {s.Date} Time - {s.Time} SalePoint - {s.SalesPoint.Name} SalesData - {string.Join(", ", s.SalesData.Select(v => v.Product.Name).ToList())} Amount - {s.TotalAmount}"));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CrudApiService.Abstract.Model
         /// <summary>
         /// Коллекция всех идентификаторов покупок.
         /// </summary>
-        public List<Sale> SaleIds { get; set; }
+        public List<Sale> SalesIds { get; set; }
 
         /// <summary>
         /// Навигационное свойство.

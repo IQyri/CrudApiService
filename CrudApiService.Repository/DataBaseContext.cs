@@ -33,7 +33,7 @@ namespace CrudApiService.Repository
         /// Коллекция актов продаж
         /// </summary>
         public DbSet<Sale> Sales { get; set; }
-        
+
         /// <summary>
         /// Коллекция данных о продаже.
         /// </summary>
@@ -47,6 +47,7 @@ namespace CrudApiService.Repository
             Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+
         /// <summary>
         /// Конструктор с настройками.
         /// </summary>
@@ -74,9 +75,10 @@ namespace CrudApiService.Repository
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new SaleConfiguration());
-            modelBuilder.ApplyConfiguration(new ProvidedProductConfiguration());
-            modelBuilder.ApplyConfiguration(new SaleDataConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new SaleConfiguration())
+                .ApplyConfiguration(new ProvidedProductConfiguration())
+                .ApplyConfiguration(new SaleDataConfiguration());
         }
     }
 }

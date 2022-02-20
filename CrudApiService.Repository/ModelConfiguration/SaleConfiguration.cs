@@ -15,9 +15,14 @@ namespace CrudApiService.Repository.ModelConfiguration
         /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<Sale> builder)
         {
-            builder.HasOne(p => p.Buyer)
-                .WithMany(k => k.SaleIds)
-                .HasForeignKey(p => p.Id);
+            builder
+                .HasOne(p => p.Buyer)
+                .WithMany(k => k.SalesIds)
+                .HasForeignKey(k => k.BuyerId);
+
+            builder
+                .Property(p => p.TotalAmount)
+                .ValueGeneratedOnAddOrUpdate();
         }
     }
 }
