@@ -23,10 +23,18 @@ namespace CrudApiService.Abstract.Interfaces
         T GetItem(int id);
 
         /// <summary>
-        /// Создать объект типа Т.
+        /// Создать объекты типа Т.
         /// </summary>
         /// <param name="items"></param>
-        void Create(IEnumerable<T> items);
+        /// <param name="getId"></param>
+        ICollection<int> Create(IEnumerable<T> items, Func<T, int> getId);
+
+        /// <summary>
+        /// Создать объекты типа Т.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="getId"></param>
+        int Create(T item, Func<T, int> getId);
 
         /// <summary>
         /// Обновить данные объекта типа Т.

@@ -32,7 +32,7 @@ namespace CrudApiService.Abstract.Model
         /// <summary>
         /// Навигационное свойство.
         /// </summary>
-        public SalesPoint SalesPoint { get; set; }
+        public virtual SalesPoint SalesPoint { get; set; }
 
         /// <summary>
         /// Идентификатор покупателя. Внешний ключ.
@@ -42,7 +42,7 @@ namespace CrudApiService.Abstract.Model
         /// <summary>
         /// Навигационное свойство.
         /// </summary>
-        public Buyer Buyer { get; set; }
+        public virtual Buyer Buyer { get; set; }
 
         /// <summary>
         /// Список информации о покупках.

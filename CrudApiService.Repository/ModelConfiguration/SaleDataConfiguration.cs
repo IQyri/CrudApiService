@@ -15,9 +15,7 @@ namespace CrudApiService.Repository.ModelConfiguration
         /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<SalesData> builder)
         {
-            builder.HasKey(k => k.ProductId);
-
-            builder.Property(p => p.ProductAmount).ValueGeneratedOnAddOrUpdate();
+            builder.HasKey(k => k.Id);
         }
     }
 }

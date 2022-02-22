@@ -3,8 +3,14 @@
     /// <summary>
     /// Модель данных для доступных для продажи товаров
     /// </summary>
+    /// ToDo: add SalesPointId
     public class ProvidedProduct
     {
+        /// <summary>
+        /// Идентификатор записи о доступных для продажи товаров
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Идентификатор продукта.
         /// </summary>
@@ -13,7 +19,7 @@
         /// <summary>
         /// Навигационное свойство
         /// </summary>
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// Количество продукта.

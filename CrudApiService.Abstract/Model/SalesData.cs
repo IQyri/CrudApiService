@@ -6,14 +6,19 @@
     public class SalesData
     {
         /// <summary>
+        /// Идентификатор данных информации о продаже.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Идентификатор купленного продукта.
         /// </summary>
         public int ProductId { get; set; }
-        
+
         /// <summary>
         /// Навигационное свойство.
         /// </summary>
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// Количество купленных продуктов с данным ProductId.
@@ -23,10 +28,6 @@
         /// <summary>
         /// Общая стоимость купленного количества продуктов с данным ProductId.
         /// </summary>
-        public int ProductAmount
-        {
-            get => ProductQuantity * Product.Price;
-            private set { }
-        }
+        public int ProductAmount { get; set; }
     }
 }

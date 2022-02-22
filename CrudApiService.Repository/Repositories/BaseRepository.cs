@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CrudApiService.Abstract.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +15,11 @@ namespace CrudApiService.Repository.Repositories
         where T : class
         where C : DbContext
     {
-        private readonly C _dataContext;
+        /// <summary>
+        /// 
+        /// </summary>
+        protected readonly C _dataContext;
+
         private readonly DbSet<T> _dbSet;
         private bool _disposed;
 
@@ -41,17 +46,25 @@ namespace CrudApiService.Repository.Repositories
         }
 
         /// <inheritdoc />
-        public virtual void Create(IEnumerable<T> items)
+        public virtual ICollection<int> Create(IEnumerable<T> items, Func<T, int> getId)
         {
             _dbSet.AddRange(items);
             Save();
+            return items.Select(v => getId(v)).ToArray();
+        }
+        
+        /// <inheritdoc />
+        public virtual int Create(T item, Func<T, int> getId)
+        {
+            var id = Create(new[] { item }, getId);
+            Save();
+            return id.Single();
         }
 
         /// <inheritdoc />
         public virtual void Update(T item)
         {
-            _dataContext.Entry(item).State = EntityState.Modified;
-            Save();
+            throw new NotImplementedException();
         }
 
         /// <inheritdoc />

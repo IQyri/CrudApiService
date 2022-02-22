@@ -7,12 +7,12 @@ using MoreLinq;
 namespace CrudApiService.Repository
 {
     /// <summary>
-    /// 
+    /// Класс для генерации бд.
     /// </summary>
     public class DataGenerator
     {
         /// <summary>
-        /// 
+        /// Инициализация контекста начальными данными.
         /// </summary>
         public static DataBaseContext Initialize()
         {
@@ -54,7 +54,7 @@ namespace CrudApiService.Repository
             );
 
             context.SalesPoints.AddRange(
-                new SalesPoint() {Name = "FixPrice", ProvidedProducts = context.ProvidedProducts.Take(4).ToList()},
+                new SalesPoint() {Name = "FixPrice", ProvidedProducts = context.ProvidedProducts.Take(3).ToList()},
                 new SalesPoint() {Name = "Crossroad", ProvidedProducts = context.ProvidedProducts.Skip(2).ToList()},
                 new SalesPoint() {Name = "Globus", ProvidedProducts = context.ProvidedProducts.Skip(3).ToList()}
             );
@@ -64,7 +64,8 @@ namespace CrudApiService.Repository
                 new SalesData()
                 {
                     Product = context.Products.First(n => n.Name == "Cheese"),
-                    ProductQuantity = 4
+                    ProductQuantity = 4,
+                    ProductAmount = 720
                 }
             );
             context.SaveChanges();
